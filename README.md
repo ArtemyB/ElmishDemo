@@ -1,6 +1,8 @@
-# Fable Minimal App
+# Fable + Elmish + Feliz + Fable.Form + Material UI demo app
 
-This is a small Fable app project so you can easily get started and add your own code progressively. For more comprehensive templates [check this page](https://fable.io/docs/2-steps/your-first-fable-project.html).
+This app is created to demonstrate the issue of excessive re-rendering. The problem is that the whole global Elmish-state dependent part of the app tends to re-render on every app state change (according to what React Dev Tools shows with "Highlight updates when components render" setting being enabled), even though only necessary parts of the global state are passed to child views. For example Login form's state is a part of the global Elmish state, and even one form's input change causes the whole app UI to re-render (even AppBar, which is independent from Login form values).
+
+The demo app consists of 2 pages: Login and Home. Login page is the default one, it requires from user to enter user's name (any nonempty string) and a password (also any non-empty string). After that the app redirects the user to the Home page, which will only output current user's name. So the Home page is not available untill Log in form is submitted.
 
 ## Requirements
 
